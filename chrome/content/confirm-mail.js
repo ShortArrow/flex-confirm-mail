@@ -148,7 +148,9 @@ collectFileName: function(msgCompFields,fileNamesList) {
         
         for (var i = 0; i < attachmentList.getRowCount(); i++) {
        
-            var fileName = attachmentList.childNodes[i].getAttribute("label");
+
+            var attachmentItem = attachmentList.childNodes[i];
+            var fileName = attachmentItem.getAttribute("label") || attachmentItem.getAttribute("name");
             fileNamesList.push(fileName);
 	
         }
