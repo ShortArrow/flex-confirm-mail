@@ -10,6 +10,9 @@
 .confirm-mail-list-separator:not([selected="true"]) {
     background: #DEEFFF;
 }
+.confirm-mail-list-group-separator {
+	height: 1em;
+}
 
 #otherDomains > listitem[data-exceptional]:not([selected="true"]),
 #otherDomains > listitem[data-exceptional][selected="true"],

@@ -88,6 +88,14 @@ function startup() {
 			return headerItem;
 		}
 
+		function createGroupSeparator() {
+			var item = document.createElement("listitem");
+			item.setAttribute("class", "confirm-mail-list-group-separator");
+			item.appendChild(document.createElement("listcell"));
+			item.appendChild(document.createElement("listcell"));
+			return item;
+		}
+
 		function setHeaderStarIconVisible(groupHeaderItem, groupAllChecked) {
 			// TODO: Use CSS
 			var icon = groupAllChecked ?
@@ -134,7 +142,13 @@ function startup() {
 		// external domains
 		function createExternalDomainsListItems(externals) {
 			var groupedExternalRecipients = AddressUtil.groupDestinationsByDomain(externals);
+			var index = 0;
 			for (let [domainForThisGroup, destinationsForThisGroup] in Iterator(groupedExternalRecipients)) {
+				if (index > 0) {
+					externalList.appendChild(createGroupSeparator());
+				}
+				index++;
+
 				let shouldBeColored = ExceptionManager.isExceptionalDomain(domainForThisGroup) &&
 					AttachmentManager.hasAttachments();
 
